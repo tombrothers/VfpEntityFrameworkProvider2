@@ -1,0 +1,1427 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+####################################################################################################################
+
+BE AWARE THAT THE ORDER IN WHICH TYPES ARE DESCRIBED IN THE PROVIDER MANIFEST IS RELEVANT AND HAVE IMPACT IN LOOKUP
+PROCESS
+
+#################################################################################################################### 
+-->
+<ProviderManifest Namespace="Vfp"
+                  xmlns="http://schemas.microsoft.com/ado/2006/04/edm/providermanifest">
+  <Types>
+    <Type Name="int"
+          PrimitiveTypeKind="Int32">
+    </Type>
+    <Type Name="integer"
+          PrimitiveTypeKind="Int32">
+    </Type>
+    <Type Name="float"
+          PrimitiveTypeKind="Single">
+      <FacetDescriptions>
+        <Precision Minimum="1"
+                   Maximum="20"
+                   DefaultValue="20"
+                   Constant="false" />
+        <Scale Minimum="0"
+               Maximum="9"
+               DefaultValue="9"
+               Constant="false" />
+      </FacetDescriptions>
+    </Type>
+    <Type Name="double"
+          PrimitiveTypeKind="Double">
+    </Type>
+    <Type Name="numeric"
+          PrimitiveTypeKind="Decimal">
+      <FacetDescriptions>
+        <Precision Minimum="1"
+                   Maximum="38"
+                   DefaultValue="18"
+                   Constant="false" />
+        <Scale Minimum="0"
+               Maximum="38"
+               DefaultValue="0"
+               Constant="false" />
+      </FacetDescriptions>
+    </Type>
+    <Type Name="currency"
+          PrimitiveTypeKind="Decimal">
+      <FacetDescriptions>
+        <Precision DefaultValue="19"
+                   Constant="true" />
+        <Scale DefaultValue="4"
+               Constant="true" />
+      </FacetDescriptions>
+    </Type>
+    <Type Name="logical"
+          PrimitiveTypeKind="Boolean">
+    </Type>
+    <Type Name="date"
+          PrimitiveTypeKind="DateTime">
+      <FacetDescriptions>
+        <Precision DefaultValue="3"
+                   Constant="true" />
+      </FacetDescriptions>
+    </Type>
+    <Type Name="datetime"
+          PrimitiveTypeKind="DateTime">
+      <FacetDescriptions>
+        <Precision DefaultValue="3"
+                   Constant="true" />
+      </FacetDescriptions>
+    </Type>
+    <Type Name="varchar"
+          PrimitiveTypeKind="String">
+      <FacetDescriptions>
+        <MaxLength Minimum="1"
+                   Maximum="254"
+                   DefaultValue="254"
+                   Constant="false" />
+        <Unicode DefaultValue="false"
+                 Constant="true" />
+        <FixedLength DefaultValue="false"
+                     Constant="true" />
+      </FacetDescriptions>
+    </Type>
+    <Type Name="binaryvarchar"
+          PrimitiveTypeKind="String">
+      <FacetDescriptions>
+        <MaxLength Minimum="1"
+                   Maximum="254"
+                   DefaultValue="254"
+                   Constant="false" />
+        <Unicode DefaultValue="true"
+                 Constant="true" />
+        <FixedLength DefaultValue="false"
+                     Constant="true" />
+      </FacetDescriptions>
+    </Type>
+    <Type Name="character"
+          PrimitiveTypeKind="String">
+      <FacetDescriptions>
+        <MaxLength Minimum="1"
+                   Maximum="254"
+                   DefaultValue="254"
+                   Constant="false" />
+        <Unicode DefaultValue="false"
+                 Constant="true" />
+        <FixedLength DefaultValue="true"
+                     Constant="true" />
+      </FacetDescriptions>
+    </Type>
+    <Type Name="char"
+          PrimitiveTypeKind="String">
+      <FacetDescriptions>
+        <MaxLength Minimum="1"
+                   Maximum="254"
+                   DefaultValue="254"
+                   Constant="false" />
+        <Unicode DefaultValue="false"
+                 Constant="true" />
+        <FixedLength DefaultValue="true"
+                     Constant="true" />
+      </FacetDescriptions>
+    </Type>
+    <Type Name="binarychar"
+          PrimitiveTypeKind="String">
+      <FacetDescriptions>
+        <MaxLength Minimum="1"
+                   Maximum="254"
+                   DefaultValue="254"
+                   Constant="false" />
+        <Unicode DefaultValue="true"
+                 Constant="true" />
+        <FixedLength DefaultValue="true"
+                     Constant="true" />
+      </FacetDescriptions>
+    </Type>
+    <Type Name="memo"
+          PrimitiveTypeKind="String" >
+      <FacetDescriptions>
+        <MaxLength DefaultValue="2147483647"
+                   Constant="true" />
+        <Unicode DefaultValue="false"
+                 Constant="true" />
+        <FixedLength DefaultValue="false"
+                     Constant="true" />
+      </FacetDescriptions>
+    </Type>
+    <Type Name="binarymemo"
+      PrimitiveTypeKind="String" >
+      <FacetDescriptions>
+        <MaxLength DefaultValue="2147483647"
+                   Constant="true" />
+        <Unicode DefaultValue="true"
+                 Constant="true" />
+        <FixedLength DefaultValue="false"
+                     Constant="true" />
+      </FacetDescriptions>
+    </Type>
+    <Type Name="blob"
+          PrimitiveTypeKind="Binary">
+      <FacetDescriptions>
+        <MaxLength DefaultValue="2147483647"
+                   Constant="true" />
+        <FixedLength DefaultValue="false"
+                     Constant="true" />
+      </FacetDescriptions>
+    </Type>
+    <Type Name="general"
+          PrimitiveTypeKind="Binary">
+      <FacetDescriptions>
+        <MaxLength DefaultValue="2147483647"
+                   Constant="true" />
+        <FixedLength DefaultValue="false"
+                     Constant="true" />
+      </FacetDescriptions>
+    </Type>
+    <Type Name="guid"
+      PrimitiveTypeKind="Guid">
+      <FacetDescriptions>
+        <MaxLength Minimum="38"
+                   Maximum="38"
+                   DefaultValue="38"
+                   Constant="true" />
+        <Unicode DefaultValue="false"
+                 Constant="true" />
+        <FixedLength DefaultValue="true"
+                     Constant="true" />
+      </FacetDescriptions>
+    </Type>
+  </Types>
+  <Functions>
+
+    <!-- BEGIN AGGREGATES ############################################# -->
+    <!-- AVG -->
+    <Function Name="AVG"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="Int32" />
+      <Parameter Name="arg"
+                 Type="Collection(Int32)"
+                 Mode="In" />
+    </Function>
+    <Function Name="AVG"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="Int64" />
+      <Parameter Name="arg"
+                 Type="Collection(Int64)"
+                 Mode="In" />
+    </Function>
+    <Function Name="AVG"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="Decimal" />
+      <Parameter Name="arg"
+                 Type="Collection(Decimal)"
+                 Mode="In" />
+    </Function>
+    <Function Name="AVG"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="Double" />
+      <Parameter Name="arg"
+                 Type="Collection(Double)"
+                 Mode="In" />
+    </Function>
+
+    <!-- COUNT -->
+    <Function Name="COUNT"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="Int32" />
+      <Parameter Name="arg"
+                 Type="Collection(Boolean)"
+                 Mode="In" />
+    </Function>
+    <Function Name="COUNT"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="Int32" />
+      <Parameter Name="arg"
+                 Type="Collection(Double)"
+                 Mode="In" />
+    </Function>
+    <Function Name="COUNT"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="Int32" />
+      <Parameter Name="arg"
+                 Type="Collection(Decimal)"
+                 Mode="In" />
+    </Function>
+    <Function Name="COUNT"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="Int32" />
+      <Parameter Name="arg"
+                 Type="Collection(DateTime)"
+                 Mode="In" />
+    </Function>
+    <Function Name="COUNT"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="Int32" />
+      <Parameter Name="arg"
+                 Type="Collection(DateTimeOffset)"
+                 Mode="In" />
+    </Function>
+    <Function Name="COUNT"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="Int32" />
+      <Parameter Name="arg"
+                 Type="Collection(Time)"
+                 Mode="In" />
+    </Function>
+    <Function Name="COUNT"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="Int32" />
+      <Parameter Name="arg"
+                 Type="Collection(Guid)"
+                 Mode="In" />
+    </Function>
+    <Function Name="COUNT"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="Int32" />
+      <Parameter Name="arg"
+                 Type="Collection(String)"
+                 Mode="In" />
+    </Function>
+    <Function Name="COUNT"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="Int32" />
+      <Parameter Name="arg"
+                 Type="Collection(Binary)"
+                 Mode="In" />
+    </Function>
+
+    <!-- GROUPING !NOT SUPPORTED! -->
+
+    <!-- MAX -->
+    <Function Name="MAX"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="Byte" />
+      <Parameter Name="arg"
+                 Type="Collection(Byte)"
+                 Mode="In" />
+    </Function>
+    <Function Name="MAX"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="Int16" />
+      <Parameter Name="arg"
+                 Type="Collection(Int16)"
+                 Mode="In" />
+    </Function>
+    <Function Name="MAX"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="Int32" />
+      <Parameter Name="arg"
+                 Type="Collection(Int32)"
+                 Mode="In" />
+    </Function>
+    <Function Name="MAX"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="Int64" />
+      <Parameter Name="arg"
+                 Type="Collection(Int64)"
+                 Mode="In" />
+    </Function>
+    <Function Name="MAX"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="Decimal" />
+      <Parameter Name="arg"
+                 Type="Collection(Decimal)"
+                 Mode="In" />
+    </Function>
+    <Function Name="MAX"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="Double" />
+      <Parameter Name="arg"
+                 Type="Collection(Double)"
+                 Mode="In" />
+    </Function>
+    <Function Name="MAX"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="Single" />
+      <Parameter Name="arg"
+                 Type="Collection(Single)"
+                 Mode="In" />
+    </Function>
+    <Function Name="MAX"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="DateTime" />
+      <Parameter Name="arg"
+                 Type="Collection(DateTime)"
+                 Mode="In" />
+    </Function>
+    <Function Name="MAX"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="Time" />
+      <Parameter Name="arg"
+                 Type="Collection(Time)"
+                 Mode="In" />
+    </Function>
+    <Function Name="MAX"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="DateTimeOffset" />
+      <Parameter Name="arg"
+                 Type="Collection(DateTimeOffset)"
+                 Mode="In" />
+    </Function>
+    <Function Name="MAX"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="String" />
+      <Parameter Name="arg"
+                 Type="Collection(String)"
+                 Mode="In" />
+    </Function>
+    <Function Name="MAX"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="Binary" />
+      <Parameter Name="arg"
+                 Type="Collection(Binary)"
+                 Mode="In" />
+    </Function>
+
+    <!-- MIN -->
+    <Function Name="MIN"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="Byte" />
+      <Parameter Name="arg"
+                 Type="Collection(Byte)"
+                 Mode="In" />
+    </Function>
+    <Function Name="MIN"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="Int16" />
+      <Parameter Name="arg"
+                 Type="Collection(Int16)"
+                 Mode="In" />
+    </Function>
+    <Function Name="MIN"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="Int32" />
+      <Parameter Name="arg"
+                 Type="Collection(Int32)"
+                 Mode="In" />
+    </Function>
+    <Function Name="MIN"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="Int64" />
+      <Parameter Name="arg"
+                 Type="Collection(Int64)"
+                 Mode="In" />
+    </Function>
+    <Function Name="MIN"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="Decimal" />
+      <Parameter Name="arg"
+                 Type="Collection(Decimal)"
+                 Mode="In" />
+    </Function>
+    <Function Name="MIN"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="Double" />
+      <Parameter Name="arg"
+                 Type="Collection(Double)"
+                 Mode="In" />
+    </Function>
+    <Function Name="MIN"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="Single" />
+      <Parameter Name="arg"
+                 Type="Collection(Single)"
+                 Mode="In" />
+    </Function>
+    <Function Name="MIN"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="DateTime" />
+      <Parameter Name="arg"
+                 Type="Collection(DateTime)"
+                 Mode="In" />
+    </Function>
+    <Function Name="MIN"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="Time" />
+      <Parameter Name="arg"
+                 Type="Collection(Time)"
+                 Mode="In" />
+    </Function>
+    <Function Name="MIN"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="DateTimeOffset" />
+      <Parameter Name="arg"
+                 Type="Collection(DateTimeOffset)"
+                 Mode="In" />
+    </Function>
+    <Function Name="MIN"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="String" />
+      <Parameter Name="arg"
+                 Type="Collection(String)"
+                 Mode="In" />
+    </Function>
+    <Function Name="MIN"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="Binary" />
+      <Parameter Name="arg"
+                 Type="Collection(Binary)"
+                 Mode="In" />
+    </Function>
+
+    <!-- SUM -->
+    <Function Name="SUM"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="Int32" />
+      <Parameter Name="arg"
+                 Type="Collection(Int32)"
+                 Mode="In" />
+    </Function>
+    <Function Name="SUM"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="Int64" />
+      <Parameter Name="arg"
+                 Type="Collection(Int64)"
+                 Mode="In" />
+    </Function>
+    <Function Name="SUM"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="Decimal" />
+      <Parameter Name="arg"
+                 Type="Collection(Decimal)"
+                 Mode="In" />
+    </Function>
+    <Function Name="SUM"
+              Aggregate="true"
+              BuiltIn="true">
+      <ReturnType Type="Double" />
+      <Parameter Name="arg"
+                 Type="Collection(Double)"
+                 Mode="In" />
+    </Function>
+
+    <!-- END AGGREGATES ############################################# -->
+
+    <!-- BEGIN STRING FUNCTIONS ##################################### -->
+    <Function Name="ASC"
+              BuiltIn="true">
+      <ReturnType Type="Int32" />
+      <Parameter Name="string1"
+                 Type="String"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="CHR"
+              BuiltIn="true">
+      <ReturnType Type="String"/>
+      <Parameter Name="number"
+                 Type="Int32"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="AT"
+              BuiltIn="true">
+      <ReturnType Type="Int32" />
+      <Parameter Name="cSearchExpression"
+                 Type="String"
+                 Mode="In" />
+      <Parameter Name="cExpressionSearched"
+                 Type="String"
+                 Mode="In" />
+    </Function>
+    <Function Name="AT"
+              BuiltIn="true">
+      <ReturnType Type="Int32" />
+      <Parameter Name="cSearchExpression"
+                 Type="String"
+                 Mode="In" />
+      <Parameter Name="cExpressionSearched"
+                 Type="String"
+                 Mode="In" />
+      <Parameter Name="nOccurrence"
+                 Type="Int32"
+                 Mode="In" />
+    </Function>
+    <Function Name="AT"
+              BuiltIn="true">
+      <ReturnType Type="Int64" />
+      <Parameter Name="cSearchExpression"
+                 Type="String"
+                 Mode="In" />
+      <Parameter Name="cExpressionSearched"
+                 Type="String"
+                 Mode="In" />
+      <Parameter Name="nOccurrence"
+                 Type="Int64"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="ATC"
+          BuiltIn="true">
+      <ReturnType Type="Int32" />
+      <Parameter Name="cSearchExpression"
+                 Type="String"
+                 Mode="In" />
+      <Parameter Name="cExpressionSearched"
+                 Type="String"
+                 Mode="In" />
+    </Function>
+    <Function Name="ATC"
+              BuiltIn="true">
+      <ReturnType Type="Int32" />
+      <Parameter Name="cSearchExpression"
+                 Type="String"
+                 Mode="In" />
+      <Parameter Name="cExpressionSearched"
+                 Type="String"
+                 Mode="In" />
+      <Parameter Name="nOccurrence"
+                 Type="Int32"
+                 Mode="In" />
+    </Function>
+    <Function Name="ATC"
+              BuiltIn="true">
+      <ReturnType Type="Int64" />
+      <Parameter Name="cSearchExpression"
+                 Type="String"
+                 Mode="In" />
+      <Parameter Name="cExpressionSearched"
+                 Type="String"
+                 Mode="In" />
+      <Parameter Name="nOccurrence"
+                 Type="Int64"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="LEFT"
+              BuiltIn="true">
+      <ReturnType Type="String" />
+      <Parameter Name="str"
+                 Type="String"
+                 Mode="In" />
+      <Parameter Name="count"
+                 Type="Int64"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="LEN"
+              BuiltIn="true">
+      <ReturnType Type="Int32" />
+      <Parameter Name="string_expression"
+                 Type="String"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="LOWER"
+              BuiltIn="true">
+      <ReturnType Type="String" />
+      <Parameter Name="str"
+                 Type="String"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="LTRIM"
+              BuiltIn="true">
+      <ReturnType Type="String" />
+      <Parameter Name="str"
+                 Type="String"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="STRTRAN"
+              BuiltIn="true">
+      <ReturnType Type="String" />
+      <Parameter Name="cSearched"
+                 Type="String"
+                 Mode="In" />
+      <Parameter Name="cExpressionSought"
+                 Type="String"
+                 Mode="In" />
+      <Parameter Name="cReplacement"
+                 Type="String"
+                 Mode="In" />
+    </Function>
+    <Function Name="STRTRAN"
+              BuiltIn="true">
+      <ReturnType Type="String" />
+      <Parameter Name="cSearched"
+                 Type="String"
+                 Mode="In" />
+      <Parameter Name="cExpressionSought"
+                 Type="String"
+                 Mode="In" />
+      <Parameter Name="cReplacement"
+                 Type="String"
+                 Mode="In" />
+      <Parameter Name="nStartOccurrence"
+                 Type="Int32"
+                 Mode="In" />
+    </Function>
+    <Function Name="STRTRAN"
+              BuiltIn="true">
+      <ReturnType Type="String" />
+      <Parameter Name="cSearched"
+                 Type="String"
+                 Mode="In" />
+      <Parameter Name="cExpressionSought"
+                 Type="String"
+                 Mode="In" />
+      <Parameter Name="cReplacement"
+                 Type="String"
+                 Mode="In" />
+      <Parameter Name="nStartOccurrence"
+                 Type="Int32"
+                 Mode="In" />
+      <Parameter Name="nNumberOfOccurrences"
+                 Type="Int32"
+                 Mode="In" />
+    </Function>
+    <Function Name="STRTRAN"
+          BuiltIn="true">
+      <ReturnType Type="String" />
+      <Parameter Name="cSearched"
+                 Type="String"
+                 Mode="In" />
+      <Parameter Name="cExpressionSought"
+                 Type="String"
+                 Mode="In" />
+      <Parameter Name="cReplacement"
+                 Type="String"
+                 Mode="In" />
+      <Parameter Name="nStartOccurrence"
+                 Type="Int32"
+                 Mode="In" />
+      <Parameter Name="nNumberOfOccurrences"
+                 Type="Int32"
+                 Mode="In" />
+      <Parameter Name="nFlags"
+                 Type="Int32"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="REPLICATE"
+              BuiltIn="true">
+      <ReturnType Type="String"  />
+      <Parameter Name="strTarget"
+                 Type="String"
+                 Mode="In" />
+      <Parameter Name="count"
+                 Type="Int32"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="RIGHT"
+              BuiltIn="true">
+      <ReturnType Type="String" />
+      <Parameter Name="str"
+                 Type="String"
+                 Mode="In" />
+      <Parameter Name="count"
+                 Type="Int64"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="ALLTRIM"
+              BuiltIn="true">
+      <ReturnType Type="String" />
+      <Parameter Name="str"
+                 Type="String"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="RTRIM"
+              BuiltIn="true">
+      <ReturnType Type="String" />
+      <Parameter Name="str"
+                 Type="String"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="SPACE"
+              BuiltIn="true">
+      <ReturnType Type="String" />
+      <Parameter Name="arg1"
+                 Type="Int32"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="STR"
+              BuiltIn="true">
+      <ReturnType Type="String"  />
+      <Parameter Name="number"
+                 Type="Double"
+                 Mode="In" />
+    </Function>
+    <Function Name="STR"
+              BuiltIn="true">
+      <ReturnType Type="String"  />
+      <Parameter Name="number"
+                 Type="Decimal"
+                 Mode="In" />
+    </Function>
+    <Function Name="STR"
+              BuiltIn="true">
+      <ReturnType Type="String"  />
+      <Parameter Name="number"
+                 Type="Double"
+                 Mode="In" />
+      <Parameter Name="length"
+                 Type="Int32"
+                 Mode="In" />
+    </Function>
+    <Function Name="STR"
+              BuiltIn="true">
+      <ReturnType Type="String"  />
+      <Parameter Name="number"
+                 Type="Decimal"
+                 Mode="In" />
+      <Parameter Name="length"
+                 Type="Int32"
+                 Mode="In" />
+    </Function>
+    <Function Name="STR"
+              BuiltIn="true">
+      <ReturnType Type="String" />
+      <Parameter Name="number"
+                 Type="Double"
+                 Mode="In" />
+      <Parameter Name="length"
+                 Type="Int32"
+                 Mode="In" />
+      <Parameter Name="decimalPlaces"
+                 Type="Int32"
+                 Mode="In" />
+    </Function>
+    <Function Name="STR"
+              BuiltIn="true">
+      <ReturnType Type="String" />
+      <Parameter Name="number"
+                 Type="Decimal"
+                 Mode="In" />
+      <Parameter Name="length"
+                 Type="Int32"
+                 Mode="In" />
+      <Parameter Name="decimalPlaces"
+                 Type="Int32"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="STUFF"
+              BuiltIn="true">
+      <ReturnType Type="String"  />
+      <Parameter Name="strInput"
+                 Type="String"
+                 Mode="In" />
+      <Parameter Name="start"
+                 Type="Int32"
+                 Mode="In" />
+      <Parameter Name="length"
+                 Type="Int32"
+                 Mode="In" />
+      <Parameter Name="strReplacement"
+                 Type="String"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="SUBSTR"
+              BuiltIn="true">
+      <ReturnType Type="String" />
+      <Parameter Name="str"
+                 Type="String"
+                 Mode="In" />
+      <Parameter Name="start"
+                 Type="Int64"
+                 Mode="In" />
+      <Parameter Name="length"
+                 Type="Int64"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="UPPER"
+              BuiltIn="true">
+      <ReturnType Type="String" />
+      <Parameter Name="str"
+                 Type="String"
+                 Mode="In" />
+    </Function>
+
+    <!-- END STRING FUNCTIONS ####################################### -->
+
+    <!-- BEGIN MATH FUNCTIONS ####################################### -->
+
+    <Function Name="ABS"
+              BuiltIn="true">
+      <ReturnType Type="Int32" />
+      <Parameter Name="arg"
+                 Type="Int32"
+                 Mode="In" />
+    </Function>
+    <Function Name="ABS"
+              BuiltIn="true">
+      <ReturnType Type="Int64" />
+      <Parameter Name="arg"
+                 Type="Int64"
+                 Mode="In" />
+    </Function>
+    <Function Name="ABS"
+              BuiltIn="true">
+      <ReturnType Type="Decimal" />
+      <Parameter Name="arg"
+                 Type="Decimal"
+                 Mode="In" />
+    </Function>
+    <Function Name="ABS"
+              BuiltIn="true">
+      <ReturnType Type="Double" />
+      <Parameter Name="arg"
+                 Type="Double"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="ACOS"
+              BuiltIn="true">
+      <ReturnType Type="Double" />
+      <Parameter Name="arg1"
+                 Type="Double"
+                 Mode="In" />
+    </Function>
+    <Function Name="ACOS"
+              BuiltIn="true">
+      <ReturnType Type="Double" />
+      <Parameter Name="arg1"
+                 Type="Decimal"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="ASIN"
+              BuiltIn="true">
+      <ReturnType Type="Double" />
+      <Parameter Name="arg"
+                 Type="Double"
+                 Mode="In" />
+    </Function>
+    <Function Name="ASIN"
+              BuiltIn="true">
+      <ReturnType Type="Double" />
+      <Parameter Name="arg"
+                 Type="Decimal"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="ATAN"
+              BuiltIn="true">
+      <ReturnType Type="Double" />
+      <Parameter Name="arg"
+                 Type="Double"
+                 Mode="In" />
+    </Function>
+    <Function Name="ATAN"
+              BuiltIn="true">
+      <ReturnType Type="Double" />
+      <Parameter Name="arg"
+                 Type="Decimal"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="ATN2"
+              BuiltIn="true">
+      <ReturnType Type="Double" />
+      <Parameter Name="arg1"
+                 Type="Double"
+                 Mode="In" />
+      <Parameter Name="arg2"
+                 Type="Double"
+                 Mode="In" />
+    </Function>
+    <Function Name="ATN2"
+              BuiltIn="true">
+      <ReturnType Type="Double" />
+      <Parameter Name="arg1"
+                 Type="Decimal"
+                 Mode="In" />
+      <Parameter Name="arg2"
+                 Type="Decimal"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="CEILING"
+              BuiltIn="true">
+      <ReturnType Type="Int32" />
+      <Parameter Name="arg"
+                 Type="Int32"
+                 Mode="In" />
+    </Function>
+    <Function Name="CEILING"
+              BuiltIn="true">
+      <ReturnType Type="Int64" />
+      <Parameter Name="arg"
+                 Type="Int64"
+                 Mode="In" />
+    </Function>
+    <Function Name="CEILING"
+              BuiltIn="true">
+      <ReturnType Type="Decimal" />
+      <Parameter Name="arg"
+                 Type="Decimal"
+                 Mode="In" />
+    </Function>
+    <Function Name="CEILING"
+              BuiltIn="true">
+      <ReturnType Type="Double" />
+      <Parameter Name="arg"
+                 Type="Double"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="COS"
+              BuiltIn="true">
+      <ReturnType Type="Double" />
+      <Parameter Name="arg"
+                 Type="Double"
+                 Mode="In" />
+    </Function>
+    <Function Name="COS"
+              BuiltIn="true">
+      <ReturnType Type="Double" />
+      <Parameter Name="arg"
+                 Type="Decimal"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="RTOD"
+              BuiltIn="true">
+      <ReturnType Type="Decimal" />
+      <Parameter Name="arg1"
+                 Type="Decimal"
+                 Mode="In" />
+    </Function>
+    <Function Name="RTOD"
+              BuiltIn="true">
+      <ReturnType Type="Double" />
+      <Parameter Name="arg1"
+                 Type="Double"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="EXP"
+              BuiltIn="true">
+      <ReturnType Type="Double" />
+      <Parameter Name="arg"
+                 Type="Double"
+                 Mode="In" />
+    </Function>
+    <Function Name="EXP"
+              BuiltIn="true">
+      <ReturnType Type="Double" />
+      <Parameter Name="arg"
+                 Type="Decimal"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="FLOOR"
+              BuiltIn="true">
+      <ReturnType Type="Int32" />
+      <Parameter Name="arg"
+                 Type="Int32"
+                 Mode="In" />
+    </Function>
+    <Function Name="FLOOR"
+              BuiltIn="true">
+      <ReturnType Type="Int64" />
+      <Parameter Name="arg"
+                 Type="Int64"
+                 Mode="In" />
+    </Function>
+    <Function Name="FLOOR"
+              BuiltIn="true">
+      <ReturnType Type="Decimal" />
+      <Parameter Name="arg"
+                 Type="Decimal"
+                 Mode="In" />
+    </Function>
+    <Function Name="FLOOR"
+              BuiltIn="true">
+      <ReturnType Type="Double" />
+      <Parameter Name="arg"
+                 Type="Double"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="LOG"
+              BuiltIn="true">
+      <ReturnType Type="Double" />
+      <Parameter Name="arg"
+                 Type="Double"
+                 Mode="In" />
+    </Function>
+    <Function Name="LOG"
+              BuiltIn="true">
+      <ReturnType Type="Double" />
+      <Parameter Name="arg"
+                 Type="Decimal"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="LOG10"
+              BuiltIn="true">
+      <ReturnType Type="Double" />
+      <Parameter Name="arg"
+                 Type="Double"
+                 Mode="In" />
+    </Function>
+    <Function Name="LOG10"
+              BuiltIn="true">
+      <ReturnType Type="Double" />
+      <Parameter Name="arg"
+                 Type="Decimal"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="PI"
+              BuiltIn="true">
+      <ReturnType Type="Double" />
+    </Function>
+
+    <Function Name="DTOR"
+              BuiltIn="true">
+      <ReturnType Type="Int32" />
+      <Parameter Name="arg"
+                 Type="Int32"
+                 Mode="In" />
+    </Function>
+    <Function Name="DTOR"
+              BuiltIn="true">
+      <ReturnType Type="Int64" />
+      <Parameter Name="arg"
+                 Type="Int64"
+                 Mode="In" />
+    </Function>
+    <Function Name="DTOR"
+              BuiltIn="true">
+      <ReturnType Type="Decimal" />
+      <Parameter Name="arg"
+                 Type="Decimal"
+                 Mode="In" />
+    </Function>
+    <Function Name="DTOR"
+              BuiltIn="true">
+      <ReturnType Type="Double" />
+      <Parameter Name="arg"
+                 Type="Double"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="RAND"
+              BuiltIn="true">
+      <ReturnType Type="Double" />
+    </Function>
+    <Function Name="RAND"
+              BuiltIn="true">
+      <ReturnType Type="Double" />
+      <Parameter Name="seed"
+                 Type="Int32"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="ROUND"
+              BuiltIn="true">
+      <ReturnType Type="Int32" />
+      <Parameter Name="numeric_expression"
+                 Type="Int32"
+                 Mode="In" />
+      <Parameter Name="length"
+                 Type="Int32"
+                 Mode="In" />
+    </Function>
+    <Function Name="ROUND"
+              BuiltIn="true">
+      <ReturnType Type="Int64" />
+      <Parameter Name="numeric_expression"
+                 Type="Int64"
+                 Mode="In" />
+      <Parameter Name="length"
+                 Type="Int32"
+                 Mode="In" />
+    </Function>
+    <Function Name="ROUND"
+              BuiltIn="true">
+      <ReturnType Type="Decimal" />
+      <Parameter Name="numeric_expression"
+                 Type="Decimal"
+                 Mode="In" />
+      <Parameter Name="length"
+                 Type="Int32"
+                 Mode="In" />
+    </Function>
+    <Function Name="ROUND"
+              BuiltIn="true">
+      <ReturnType Type="Double" />
+      <Parameter Name="numeric_expression"
+                 Type="Double"
+                 Mode="In" />
+      <Parameter Name="length"
+                 Type="Int32"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="SIGN"
+              BuiltIn="true">
+      <ReturnType Type="Int32" />
+      <Parameter Name="arg"
+                 Type="Int32"
+                 Mode="In" />
+    </Function>
+    <Function Name="SIGN"
+              BuiltIn="true">
+      <ReturnType Type="Int64" />
+      <Parameter Name="arg"
+                 Type="Int64"
+                 Mode="In" />
+    </Function>
+    <Function Name="SIGN"
+              BuiltIn="true">
+      <ReturnType Type="Decimal" />
+      <Parameter Name="arg"
+                 Type="Decimal"
+                 Mode="In" />
+    </Function>
+    <Function Name="SIGN"
+              BuiltIn="true">
+      <ReturnType Type="Double" />
+      <Parameter Name="arg"
+                 Type="Double"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="SIN"
+              BuiltIn="true">
+      <ReturnType Type="Double" />
+      <Parameter Name="arg"
+                 Type="Decimal"
+                 Mode="In" />
+    </Function>
+    <Function Name="SIN"
+              BuiltIn="true">
+      <ReturnType Type="Double" />
+      <Parameter Name="arg"
+                 Type="Double"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="SQRT"
+              BuiltIn="true">
+      <ReturnType Type="Double" />
+      <Parameter Name="arg"
+                 Type="Double"
+                 Mode="In" />
+    </Function>
+    <Function Name="SQRT"
+              BuiltIn="true">
+      <ReturnType Type="Double" />
+      <Parameter Name="arg"
+                 Type="Decimal"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="TAN"
+              BuiltIn="true">
+      <ReturnType Type="Double" />
+      <Parameter Name="arg"
+                 Type="Double"
+                 Mode="In" />
+    </Function>
+    <Function Name="TAN"
+              BuiltIn="true">
+      <ReturnType Type="Double" />
+      <Parameter Name="arg"
+                 Type="Decimal"
+                 Mode="In" />
+    </Function>
+
+    <!-- END MATH FUNCTIONS ######################################### -->
+
+    <!-- BEGIN DATE FUNCTIONS ####################################### -->
+
+    <Function Name="CDOW"
+              BuiltIn="true">
+      <ReturnType Type="String" />
+      <Parameter Name="date"
+                 Type="DateTime"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="DAY"
+              BuiltIn="true">
+      <ReturnType Type="Int32" />
+      <Parameter Name="date"
+                 Type="DateTime"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="DATETIME"
+              BuiltIn="true">
+      <ReturnType Type="DateTime" />
+    </Function>
+
+    <Function Name="CMONTH"
+              BuiltIn="true">
+      <ReturnType Type="String" />
+      <Parameter Name="date"
+                 Type="DateTime"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="MONTH"
+              BuiltIn="true">
+      <ReturnType Type="Int32" />
+      <Parameter Name="date"
+                 Type="DateTime"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="YEAR"
+              BuiltIn="true">
+      <ReturnType Type="Int32" />
+      <Parameter Name="date"
+                 Type="DateTime"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="HOUR"
+              BuiltIn="true">
+      <ReturnType Type="Int32" />
+      <Parameter Name="date"
+                 Type="DateTime"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="MINUTE"
+              BuiltIn="true">
+      <ReturnType Type="Int32" />
+      <Parameter Name="date"
+                 Type="DateTime"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="SEC"
+              BuiltIn="true">
+      <ReturnType Type="Int32" />
+      <Parameter Name="date"
+                 Type="DateTime"
+                 Mode="In" />
+    </Function>
+
+    <!-- END DATE FUNCTIONS ######################################### -->
+
+    <!-- BEGIN SYSTEM FUNCTIONS ##################################### -->
+
+    <!-- ISDIGIT( arg ) //implicit conversion -->
+    <Function Name="ISDIGIT"
+              BuiltIn="true">
+      <ReturnType Type="Boolean" />
+      <Parameter Name="arg"
+                 Type="String"
+                 Mode="In" />
+    </Function>
+
+    <!-- EMPTY( arg )  -->
+    <Function Name="EMPTY"
+          BuiltIn="true">
+      <ReturnType Type="Boolean" />
+      <Parameter Name="arg"
+                 Type="String"
+                 Mode="In" />
+    </Function>
+    
+    <Function Name="EMPTY"
+          BuiltIn="true">
+      <ReturnType Type="Boolean" />
+      <Parameter Name="arg"
+                 Type="Decimal"
+                 Mode="In" />
+    </Function>
+    
+    <Function Name="EMPTY"
+          BuiltIn="true">
+      <ReturnType Type="Boolean" />
+      <Parameter Name="arg"
+                 Type="DateTime"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="EMPTY"
+          BuiltIn="true">
+      <ReturnType Type="Boolean" />
+      <Parameter Name="arg"
+                 Type="Boolean"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="EMPTY"
+          BuiltIn="true">
+      <ReturnType Type="Boolean" />
+      <Parameter Name="arg"
+                 Type="Double"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="EMPTY"
+          BuiltIn="true">
+      <ReturnType Type="Boolean" />
+      <Parameter Name="arg"
+                 Type="Int32"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="EMPTY"
+          BuiltIn="true">
+      <ReturnType Type="Boolean" />
+      <Parameter Name="arg"
+                 Type="Int64"
+                 Mode="In" />
+    </Function>
+
+    <Function Name="EMPTY"
+          BuiltIn="true">
+      <ReturnType Type="Boolean" />
+      <Parameter Name="arg"
+                 Type="Single"
+                 Mode="In" />
+    </Function>
+
+    <!-- END SYSTEM FUNCTIONS ####################################### -->
+  </Functions>
+</ProviderManifest>

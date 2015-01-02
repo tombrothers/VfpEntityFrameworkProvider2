@@ -1,0 +1,568 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NorthwindEFModel.Store"
+        Alias="Self"
+        xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl"
+        Provider="VfpEntityFrameworkProvider"
+        ProviderManifestToken="VFP9">
+  <EntityContainer Name="dbo">
+    <EntitySet Name="Employees"
+               EntityType="NorthwindEFModel.Store.Employees" />
+    <EntitySet Name="Regions"
+               EntityType="NorthwindEFModel.Store.Regions" />
+    <EntitySet Name="Customers"
+               EntityType="NorthwindEFModel.Store.Customers"/>
+    <EntitySet Name="Categories"
+               EntityType="NorthwindEFModel.Store.Categories" />
+    <EntitySet Name="OrderDetails"
+               EntityType="NorthwindEFModel.Store.OrderDetails" />
+    <EntitySet Name="Suppliers"
+               EntityType="NorthwindEFModel.Store.Suppliers" />
+    <EntitySet Name="Territories"
+               EntityType="NorthwindEFModel.Store.Territories" />
+    <EntitySet Name="EmployeesTerritories"
+               EntityType="NorthwindEFModel.Store.EmployeeTerritories" />
+
+    <EntitySet Name="PreviousEmployees"
+               EntityType="NorthwindEFModel.Store.PreviousEmployees">
+      <DefiningQuery>
+        SELECT EmployeeID,LastName,FirstName,Title,TitleOfCourtesy,BirthDate,HireDate,Address,City,Region,PostalCode
+        ,Country,HomePhone,Extension,Photo,Notes,PhotoPath
+        FROM PreviousEmployees
+      </DefiningQuery>
+    </EntitySet>
+
+    <!-- TPH -->
+    <EntitySet Name="Products"
+               EntityType="NorthwindEFModel.Store.Products" />
+
+    <!-- TPT -->
+    <EntitySet Name="Orders"
+               EntityType="NorthwindEFModel.Store.Orders" />
+    <EntitySet Name="InternationalOrders"
+               EntityType="NorthwindEFModel.Store.InternationalOrders" />
+
+
+  </EntityContainer>
+
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID"
+              Type="int"
+              Nullable="false"
+              StoreGeneratedPattern="Identity" />
+    <Property Name="LastName"
+              Type="varchar"
+              Nullable="false"
+              MaxLength="20" />
+    <Property Name="FirstName"
+              Type="varchar"
+              Nullable="false"
+              MaxLength="10" />
+    <Property Name="Title"
+              Type="varchar"
+              MaxLength="30" />
+    <Property Name="TitleOfCourtesy"
+              Type="varchar"
+              MaxLength="25" />
+    <Property Name="BirthDate"
+              Type="datetime" />
+    <Property Name="HireDate"
+              Type="datetime" />
+    <Property Name="Address"
+              Type="varchar"
+              MaxLength="60" />
+    <Property Name="City"
+              Type="varchar"
+              MaxLength="15" />
+    <Property Name="Region"
+              Type="varchar"
+              MaxLength="15" />
+    <Property Name="PostalCode"
+              Type="varchar"
+              MaxLength="10" />
+    <Property Name="Country"
+              Type="varchar"
+              MaxLength="15" />
+    <Property Name="HomePhone"
+              Type="varchar"
+              MaxLength="24" />
+    <Property Name="Extension"
+              Type="varchar"
+              MaxLength="4" />
+    <Property Name="Photo"
+              Type="blob" />
+    <Property Name="Notes"
+              Type="memo" />
+    <Property Name="PhotoPath"
+              Type="varchar"
+              MaxLength="254" />
+  </EntityType>
+  <EntityType Name="PreviousEmployees">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID"
+              Type="int"
+              Nullable="false"
+              StoreGeneratedPattern="Identity" />
+    <Property Name="LastName"
+              Type="varchar"
+              Nullable="false"
+              MaxLength="20" />
+    <Property Name="FirstName"
+              Type="varchar"
+              Nullable="false"
+              MaxLength="10" />
+    <Property Name="Title"
+              Type="varchar"
+              MaxLength="30" />
+    <Property Name="TitleOfCourtesy"
+              Type="varchar"
+              MaxLength="25" />
+    <Property Name="BirthDate"
+              Type="datetime" />
+    <Property Name="HireDate"
+              Type="datetime" />
+    <Property Name="Address"
+              Type="varchar"
+              MaxLength="60" />
+    <Property Name="City"
+              Type="varchar"
+              MaxLength="15" />
+    <Property Name="Region"
+              Type="varchar"
+              MaxLength="15" />
+    <Property Name="PostalCode"
+              Type="varchar"
+              MaxLength="10" />
+    <Property Name="Country"
+              Type="varchar"
+              MaxLength="15" />
+    <Property Name="HomePhone"
+              Type="varchar"
+              MaxLength="24" />
+    <Property Name="Extension"
+              Type="varchar"
+              MaxLength="4" />
+    <Property Name="Photo"
+              Type="blob" />
+    <Property Name="Notes"
+              Type="memo" />
+    <Property Name="PhotoPath"
+              Type="varchar"
+              MaxLength="254" />
+  </EntityType>
+
+  <EntityType Name="EmployeeTerritories">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+      <PropertyRef Name="TerritoryID" />
+    </Key>
+    <Property Name="EmployeeID"
+              Type="int"
+              Nullable="false" />
+    <Property Name="TerritoryID"
+              Type="int"
+              Nullable="false" />
+  </EntityType>
+
+  <EntityType Name="Territories">
+    <Key>
+      <PropertyRef Name="TerritoryID" />
+    </Key>
+    <Property Name="TerritoryID"
+              Type="int"
+              Nullable="false"
+              StoreGeneratedPattern="Identity" />
+    <Property Name="TerritoryDescription"
+              Type="varchar"
+              Nullable="false"
+              MaxLength="50" />
+    <Property Name="RegionID"
+              Type="int"
+              Nullable="false" />
+  </EntityType>
+
+  <EntityType Name="Regions">
+    <Key>
+      <PropertyRef Name="RegionID" />
+    </Key>
+    <Property Name="RegionID"
+              Type="int"
+              Nullable="false" />
+    <Property Name="RegionDescription"
+              Type="varchar"
+              Nullable="false"
+              MaxLength="50" />
+  </EntityType>
+
+  <!-- Order Details Table -->
+  <EntityType Name="OrderDetails">
+    <Key>
+      <PropertyRef Name="OrderID" />
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="OrderID"
+              Type="int"
+              Nullable="false" />
+    <Property Name="ProductID"
+              Type="int"
+              Nullable="false" />
+    <Property Name="UnitPrice"
+              Type="currency"
+              Nullable="false" />
+    <Property Name="Quantity"
+              Type="int"
+              Nullable="false" />
+    <Property Name="Discount"
+              Type="float"
+              Nullable="false" />
+  </EntityType>
+
+  <!-- Customers Table -->
+  <EntityType Name="Customers">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID"
+              Type="char"
+              Nullable="false"
+              MaxLength="5" />
+    <Property Name="CompanyName"
+              Type="varchar"
+              Nullable="false"
+              MaxLength="40" />
+    <Property Name="ContactName"
+              Type="varchar"
+              MaxLength="30" />
+    <Property Name="ContactTitle"
+              Type="varchar"
+              MaxLength="30" />
+    <Property Name="Address"
+              Type="varchar"
+              MaxLength="60" />
+    <Property Name="City"
+              Type="varchar"
+              MaxLength="15" />
+    <Property Name="Region"
+              Type="varchar"
+              MaxLength="15" />
+    <Property Name="PostalCode"
+              Type="varchar"
+              MaxLength="10" />
+    <Property Name="Country"
+              Type="varchar"
+              MaxLength="15" />
+    <Property Name="Phone"
+              Type="varchar"
+              MaxLength="24" />
+    <Property Name="Fax"
+              Type="varchar"
+              MaxLength="24" />
+  </EntityType>
+
+  <!-- Products Table  -->
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID"
+              Type="int"
+              Nullable="false"
+              StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName"
+              Type="varchar"
+              Nullable="false"
+              MaxLength="40" />
+    <Property Name="SupplierID"
+              Type="int" />
+    <Property Name="CategoryID"
+              Type="int" />
+    <Property Name="QuantityPerUnit"
+              Type="varchar"
+              MaxLength="20" />
+    <Property Name="UnitPrice"
+              Type="currency" />
+    <Property Name="UnitsInStock"
+              Type="int" />
+    <Property Name="UnitsOnOrder"
+              Type="int" />
+    <Property Name="ReorderLevel"
+              Type="int" />
+    <Property Name="Discontinued"
+              Type="logical"
+              Nullable="false" />
+    <Property Name="DiscontinuedDate"
+              Type="datetime" />
+  </EntityType>
+
+  <!-- International Orders Table -->
+  <EntityType Name="InternationalOrders" >
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID"
+              Type="int"
+              Nullable="false" />
+    <Property Name="CustomsDescription"
+              Type="varchar"
+              Nullable="false"
+              MaxLength="100" />
+    <Property Name="ExciseTax"
+              Type="currency"
+              Nullable="false" />
+  </EntityType>
+
+  <!-- Orders Table -->
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID"
+              Type="int"
+              Nullable="false"
+              StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerID"
+              Type="char"
+              MaxLength="5" />
+    <Property Name="EmployeeID"
+              Type="int" />
+    <Property Name="OrderDate"
+              Type="datetime" />
+    <Property Name="RequiredDate"
+              Type="datetime" />
+    <Property Name="ShippedDate"
+              Type="datetime" />
+    <Property Name="Freight"
+              Type="currency" />
+    <Property Name="ShipName"
+              Type="varchar"
+              MaxLength="40" />
+    <Property Name="ShipAddress"
+              Type="varchar"
+              MaxLength="60" />
+    <Property Name="ShipCity"
+              Type="varchar"
+              MaxLength="15" />
+    <Property Name="ShipRegion"
+              Type="varchar"
+              MaxLength="15" />
+    <Property Name="ShipPostalCode"
+              Type="varchar"
+              MaxLength="10" />
+    <Property Name="ShipCountry"
+              Type="varchar"
+              MaxLength="15" />
+  </EntityType>
+
+  <!-- Categories Table -->
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID"
+              Type="int"
+              Nullable="false"
+              StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName"
+              Type="varchar"
+              Nullable="false"
+              MaxLength="15" />
+    <Property Name="Description"
+              Type="memo" />
+    <Property Name="Picture"
+              Type="blob" />
+  </EntityType>
+
+  <!-- Suppliers Table -->
+  <EntityType Name="Suppliers">
+    <Key>
+      <PropertyRef Name="SupplierID" />
+    </Key>
+    <Property Name="SupplierID"
+              Type="int"
+              Nullable="false"
+              StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyName"
+              Type="varchar"
+              Nullable="false"
+              MaxLength="40" />
+    <Property Name="ContactName"
+              Type="varchar"
+              MaxLength="30" />
+    <Property Name="ContactTitle"
+              Type="varchar"
+              MaxLength="30" />
+    <Property Name="Address"
+              Type="varchar"
+              MaxLength="60" />
+    <Property Name="City"
+              Type="varchar"
+              MaxLength="15" />
+    <Property Name="Region"
+              Type="varchar"
+              MaxLength="15" />
+    <Property Name="PostalCode"
+              Type="varchar"
+              MaxLength="10" />
+    <Property Name="Country"
+              Type="varchar"
+              MaxLength="15" />
+    <Property Name="Phone"
+              Type="varchar"
+              MaxLength="24" />
+    <Property Name="Fax"
+              Type="varchar"
+              MaxLength="24" />
+    <Property Name="HomePage"
+              Type="memo" />
+  </EntityType>
+
+  <!-- Functions -->
+
+  <Function Name="EmployeesDelete"
+            Aggregate="false"
+            BuiltIn="false"
+            NiladicFunction="false"
+            IsComposable="false"
+            ParameterTypeSemantics="AllowImplicitConversion"
+            Schema="dbo">
+    <Parameter Name="EmployeeID"
+               Type="int"
+               Mode="In" />
+  </Function>
+  <Function Name="EmployeesGet"
+            Aggregate="false"
+            BuiltIn="false"
+            NiladicFunction="false"
+            IsComposable="false"
+            ParameterTypeSemantics="AllowImplicitConversion"
+            Schema="dbo" />
+  <Function Name="EmployeesInsert"
+            Aggregate="false"
+            BuiltIn="false"
+            NiladicFunction="false"
+            IsComposable="false"
+            ParameterTypeSemantics="AllowImplicitConversion"
+            Schema="dbo">
+    <Parameter Name="LastName"
+               Type="varchar"
+               Mode="In" />
+    <Parameter Name="FirstName"
+               Type="varchar"
+               Mode="In" />
+    <Parameter Name="Title"
+               Type="varchar"
+               Mode="In" />
+    <Parameter Name="TitleOfCourtesy"
+               Type="varchar"
+               Mode="In" />
+    <Parameter Name="BirthDate"
+               Type="datetime"
+               Mode="In" />
+    <Parameter Name="HireDate"
+               Type="datetime"
+               Mode="In" />
+    <Parameter Name="Address"
+               Type="varchar"
+               Mode="In" />
+    <Parameter Name="City"
+               Type="varchar"
+               Mode="In" />
+    <Parameter Name="Region"
+               Type="varchar"
+               Mode="In" />
+    <Parameter Name="PostalCode"
+               Type="varchar"
+               Mode="In" />
+    <Parameter Name="Country"
+               Type="varchar"
+               Mode="In" />
+    <Parameter Name="HomePhone"
+               Type="varchar"
+               Mode="In" />
+    <Parameter Name="Extension"
+               Type="varchar"
+               Mode="In" />
+    <Parameter Name="Photo"
+               Type="blob"
+               Mode="In" />
+    <Parameter Name="Notes"
+               Type="memo"
+               Mode="In" />
+    <Parameter Name="PhotoPath"
+               Type="varchar"
+               Mode="In" />
+  </Function>
+  <Function Name="EmployeesUpdate"
+            Aggregate="false"
+            BuiltIn="false"
+            NiladicFunction="false"
+            IsComposable="false"
+            ParameterTypeSemantics="AllowImplicitConversion"
+            Schema="dbo">
+    <Parameter Name="EmployeeID"
+               Type="int"
+               Mode="In" />
+    <Parameter Name="LastName"
+               Type="varchar"
+               Mode="In" />
+    <Parameter Name="FirstName"
+               Type="varchar"
+               Mode="In" />
+    <Parameter Name="Title"
+               Type="varchar"
+               Mode="In" />
+    <Parameter Name="TitleOfCourtesy"
+               Type="varchar"
+               Mode="In" />
+    <Parameter Name="BirthDate"
+               Type="datetime"
+               Mode="In" />
+    <Parameter Name="HireDate"
+               Type="datetime"
+               Mode="In" />
+    <Parameter Name="Address"
+               Type="varchar"
+               Mode="In" />
+    <Parameter Name="City"
+               Type="varchar"
+               Mode="In" />
+    <Parameter Name="Region"
+               Type="varchar"
+               Mode="In" />
+    <Parameter Name="PostalCode"
+               Type="varchar"
+               Mode="In" />
+    <Parameter Name="Country"
+               Type="varchar"
+               Mode="In" />
+    <Parameter Name="HomePhone"
+               Type="varchar"
+               Mode="In" />
+    <Parameter Name="Extension"
+               Type="varchar"
+               Mode="In" />
+    <Parameter Name="Photo"
+               Type="blob"
+               Mode="In" />
+    <Parameter Name="Notes"
+               Type="memo"
+               Mode="In" />
+    <Parameter Name="PhotoPath"
+               Type="varchar"
+               Mode="In" />
+  </Function>
+
+  <!-- This null function is used in situations where we don't want to provide update functionality, but are required to provide a function -->
+  <Function Name="NullFunction"
+            Aggregate="false"
+            BuiltIn="false"
+            NiladicFunction="false"
+            IsComposable="false"
+            ParameterTypeSemantics="AllowImplicitConversion"
+            Schema="dbo" />
+
+</Schema>
