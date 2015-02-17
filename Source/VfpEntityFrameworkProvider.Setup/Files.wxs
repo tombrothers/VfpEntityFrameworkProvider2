@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <Property Id="FilesFile"
+              Value="1" />
+
+    <DirectoryRef Id="INSTALLDIR">
+      <Component Id="CMP_VfpClientDll"
+                 Guid="{0F5955FD-5D15-499E-8E63-626CE73300E0}">
+        <File Id="FILE_VfpClientDll"
+              Source="Resources\net40\VfpClient.dll"
+              Assembly=".net"
+              KeyPath="yes" />
+      </Component>
+
+      <Directory Id="DIR_Design"
+                 Name="design">
+        <Component Id="CMP_VfpClientDesignDll"
+                   Guid="{9F85ED6F-B0E2-4C2C-877B-73C98C2E655A}">
+          <File Id="FILE_VfpClientDesignDll"
+                Source="Resources\net40\VfpClient.Design.dll"
+                KeyPath="yes" />
+        </Component>
+
+        <Component Id="CMP_VfpClientDll_Design"
+                   Guid="{22194C12-015B-4106-BC55-0FB8337CBC86}">
+          <File Id="FILE_VfpClientDll_Design"
+                Source="Resources\net40\VfpClient.dll"
+                KeyPath="yes" />
+        </Component>
+      </Directory>
+
+      <Component Id="CMP_VfpEntityFrameworkProviderDll"
+                 Guid="{11258481-0DD6-452A-92EB-FC1F390FC46D}">
+        <File Id="FILE_VfpEntityFrameworkProviderDll"
+              Source="Resources\net40\VfpEntityFrameworkProvider.dll"
+              Assembly=".net"
+              KeyPath="yes" />
+      </Component>
+
+      <Directory Id="DIR_Net40"
+                 Name="net40">
+        <Component Id="CMP_VfpEntityFrameworkProviderDll_Net40"
+                   Guid="{E10C3954-6CE9-4651-BC4B-1673F11C73D4}">
+
+          <File Id="FILE_VfpEntityFrameworkProviderDll_Net40"
+                Source="Resources\net40\VfpEntityFrameworkProvider.dll"
+                KeyPath="yes" />
+        </Component>
+        <Component Id="CMP_VfpClientDll_Net40"
+                   Guid="{6DEF15FD-EB96-41B8-96DB-B3C69EE75BA4}">
+
+          <File Id="FILE_VfpClientDll_Net40"
+                Source="Resources\net40\VfpClient.dll"
+                KeyPath="yes" />
+        </Component>
+      </Directory>
+
+      <Directory Id="DIR_Net45"
+                 Name="net45">
+        <Component Id="CMP_VfpEntityFrameworkProviderDll_Net45"
+                   Guid="{B8FF3D1C-402B-4D64-8BA8-0EBC9A6CD2B7}">
+
+          <File Id="FILE_VfpEntityFrameworkProviderDll_Net45"
+                Source="Resources\net45\VfpEntityFrameworkProvider.dll"
+                KeyPath="yes" />
+        </Component>
+        <Component Id="CMP_VfpClientDll_Net45"
+                   Guid="{4F499E5F-015C-4FAD-BE2C-1A00145A878F}">
+          <File Id="FILE_VfpClientDll_Net45"
+                Source="Resources\net45\VfpClient.dll"
+                KeyPath="yes" />
+        </Component>
+      </Directory>
+    </DirectoryRef>
+
+    <ComponentGroup Id="CMP_VfpEntityFrameworkProviderFiles">
+      <ComponentRef Id="CMP_VfpClientDll"/>
+      <ComponentRef Id="CMP_VfpClientDesignDll"/>
+      <ComponentRef Id="CMP_VfpClientDll_Design"/>
+      <ComponentRef Id="CMP_VfpEntityFrameworkProviderDll"/>
+      <ComponentRef Id="CMP_VfpEntityFrameworkProviderDll_Net40"/>
+      <ComponentRef Id="CMP_VfpEntityFrameworkProviderDll_Net45"/>
+      <ComponentRef Id="CMP_VfpClientDll_Net40"/>
+      <ComponentRef Id="CMP_VfpClientDll_Net45"/>
+    </ComponentGroup>
+  </Fragment>
+</Wix>

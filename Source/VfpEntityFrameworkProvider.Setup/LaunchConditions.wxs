@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <Property Id="LaunchConditionsFile"
+              Value="1" />
+
+    <PropertyRef Id="NETFRAMEWORK40FULL" />
+
+    <Condition Message="You must install Microsoft .NET 4">
+      <![CDATA[Installed OR NETFRAMEWORK40FULL]]>
+    </Condition>
+  </Fragment>
+</Wix>

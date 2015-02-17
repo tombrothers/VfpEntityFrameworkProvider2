@@ -22,18 +22,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VfpEFQuerySamples", "Misc\V
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCodeFirstWalkthrough", "Misc\EF42CodeFirstWalkthrough\EFCodeFirstWalkthrough.csproj", "{E39ED181-F331-485D-8921-2A594393F706}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{5D4149A0-3E7A-4F2E-A09D-B77A08E50AF4}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Visualizer", "Visualizer", "{16240E21-2F48-4E28-92C7-F7AAAC68BD1A}"
-EndProject
-Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "VfpEntityFrameworkProvider.Setup", "Build\VfpEntityFrameworkProvider.Setup\VfpEntityFrameworkProvider.Setup.wixproj", "{BF533515-19F2-46FC-895D-3E3EAB968F6E}"
-	ProjectSection(ProjectDependencies) = postProject
-		{0A084227-D4CE-4341-BF69-A51A082946A0} = {0A084227-D4CE-4341-BF69-A51A082946A0}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VfpExpressionVisualizer", "Visualizer\VfpExpressionVisualizer\VfpExpressionVisualizer.csproj", "{9CAC94D0-F9ED-434A-B956-0A699043E84E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VfpExpressionVisualizerTest", "Visualizer\VfpExpressionVisualizerTest\VfpExpressionVisualizerTest.csproj", "{9DA2243C-A93E-4DAF-917F-CBC1A37FA2A5}"
+EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "VfpEntityFrameworkProvider.Setup", "VfpEntityFrameworkProvider.Setup\VfpEntityFrameworkProvider.Setup.wixproj", "{BF533515-19F2-46FC-895D-3E3EAB968F6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -142,23 +137,6 @@ Global
 		{E39ED181-F331-485D-8921-2A594393F706}.Release|Mixed Platforms.Build.0 = Release|x86
 		{E39ED181-F331-485D-8921-2A594393F706}.Release|x86.ActiveCfg = Release|x86
 		{E39ED181-F331-485D-8921-2A594393F706}.Release|x86.Build.0 = Release|x86
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Debug|x86.ActiveCfg = Debug|x86
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Debug|x86.Build.0 = Debug|x86
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release_40|Any CPU.ActiveCfg = Release|x86
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release_40|Mixed Platforms.ActiveCfg = Release|x86
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release_40|x86.ActiveCfg = Release|x86
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release_40|x86.Build.0 = Release|x86
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release_45|Any CPU.ActiveCfg = Release_40|x86
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release_45|Mixed Platforms.ActiveCfg = Release_40|x86
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release_45|x86.ActiveCfg = Release_40|x86
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release_45|x86.Build.0 = Release_40|x86
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release|Any CPU.ActiveCfg = Release|x86
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release|Mixed Platforms.Build.0 = Release|x86
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release|x86.ActiveCfg = Release|x86
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release|x86.Build.0 = Release|x86
 		{9CAC94D0-F9ED-434A-B956-0A699043E84E}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{9CAC94D0-F9ED-434A-B956-0A699043E84E}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
 		{9CAC94D0-F9ED-434A-B956-0A699043E84E}.Debug|Mixed Platforms.Build.0 = Debug|x86
@@ -199,6 +177,26 @@ Global
 		{9DA2243C-A93E-4DAF-917F-CBC1A37FA2A5}.Release|Mixed Platforms.Build.0 = Release|x86
 		{9DA2243C-A93E-4DAF-917F-CBC1A37FA2A5}.Release|x86.ActiveCfg = Release|x86
 		{9DA2243C-A93E-4DAF-917F-CBC1A37FA2A5}.Release|x86.Build.0 = Release|x86
+		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Debug|x86.ActiveCfg = Debug|x86
+		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Debug|x86.Build.0 = Debug|x86
+		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release_40|Any CPU.ActiveCfg = Release_40|x86
+		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release_40|Mixed Platforms.ActiveCfg = Release_40|x86
+		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release_40|Mixed Platforms.Build.0 = Release_40|x86
+		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release_40|x86.ActiveCfg = Release_40|x86
+		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release_40|x86.Build.0 = Release_40|x86
+		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release_45|Any CPU.ActiveCfg = Release_45|x86
+		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release_45|Mixed Platforms.ActiveCfg = Release_45|x86
+		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release_45|Mixed Platforms.Build.0 = Release_45|x86
+		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release_45|x86.ActiveCfg = Release_45|x86
+		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release_45|x86.Build.0 = Release_45|x86
+		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release|Any CPU.ActiveCfg = Release|x86
+		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release|Mixed Platforms.Build.0 = Release|x86
+		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release|x86.ActiveCfg = Release|x86
+		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -206,7 +204,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{77EC7459-0B99-4142-AFC0-95E75A2DED78} = {8F6EE313-0AE4-424B-AA36-BD33BD16E84E}
 		{E39ED181-F331-485D-8921-2A594393F706} = {8F6EE313-0AE4-424B-AA36-BD33BD16E84E}
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E} = {5D4149A0-3E7A-4F2E-A09D-B77A08E50AF4}
 		{9CAC94D0-F9ED-434A-B956-0A699043E84E} = {16240E21-2F48-4E28-92C7-F7AAAC68BD1A}
 		{9DA2243C-A93E-4DAF-917F-CBC1A37FA2A5} = {16240E21-2F48-4E28-92C7-F7AAAC68BD1A}
 	EndGlobalSection

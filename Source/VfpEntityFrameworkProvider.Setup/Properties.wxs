@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <Property Id="PropertiesFile"
+              Value="1" />
+
+    <Property Id="VFPDATASOURCE"
+              Value="{A1856B70-2009-4181-8CEB-D98EAABD5512}" />
+    <Property Id="VFPDATAPROVIDER"
+              Value="{9A0E8579-9A04-4433-9DB3-2E6B32661322}" />
+
+    <Property Id="DISPLAYNAME"
+              Value="VFP Entity Framework Provider (EF6)" />
+    <Property Id="INVARIANTNAME"
+              Value="VfpEntityFrameworkProvider2" />
+    <Property Id="DESCRIPTION"
+              Value="Entity Framework 6 Provider for Visual FoxPro Data" />
+  </Fragment>
+</Wix>

@@ -74,7 +74,7 @@
     <AssemblyOriginatorKeyFile>..\Resources\VfpEntityFrameworkProvider.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release_40|AnyCPU'">
-    <OutputPath>..\Build\VfpEntityFrameworkProvider.Setup\Resources\net40\</OutputPath>
+    <OutputPath>..\VfpEntityFrameworkProvider.Setup\Resources\net40\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
@@ -83,7 +83,7 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release_45|AnyCPU'">
-    <OutputPath>..\Build\VfpEntityFrameworkProvider.Setup\Resources\net45\</OutputPath>
+    <OutputPath>..\VfpEntityFrameworkProvider.Setup\Resources\net45\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
