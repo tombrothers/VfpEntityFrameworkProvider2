@@ -2965,8 +2965,10 @@ namespace VfpEntityFrameworkProvider.SqlGeneration {
                     // after the AS.
                     selectStatement.Select.Append(recordMemberName);
 
-                    selectStatement.Select.Append(" ");
-                    selectStatement.Select.Append(columnSymbol);
+                    if (!recordMemberName.Equals("desc", StringComparison.InvariantCultureIgnoreCase)) {
+                        selectStatement.Select.Append(" ");
+                        selectStatement.Select.Append(columnSymbol);
+                    }
 
                     // Check for column name collisions.
                     if (columnDictionary.ContainsKey(recordMemberName)) {

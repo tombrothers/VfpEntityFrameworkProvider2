@@ -7,6 +7,14 @@ namespace VfpEntityFrameworkProvider.Tests {
     [TestClass]
     public class CodeFirstTests : TestBase {
         [TestMethod]
+        public void OrderByDescFieldTest() {
+            // This test is used to verify that ordering by a Table Field "desc" does not throw an exception.
+            using (var context = GetCodeFirstContext()) {
+                context.Album.Take(10).OrderBy(x => x.Description).Skip(1).ToList();
+            }
+        }
+
+        [TestMethod]
         public void TakeSkipTest() {
             using (var context = GetCodeFirstContext()) {
                 var entity = context.Artists.Take(10).OrderBy(x => x.ArtistId).Skip(1).ToList()[0];
