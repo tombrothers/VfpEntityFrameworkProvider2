@@ -16,7 +16,7 @@
     <TempPath>$(BuildPath)Temp\</TempPath>
     <SourceCodePath>$(RootPath)Source\</SourceCodePath>
 
-    <VisualStudioIDEPath>%ProgramFiles%\Microsoft Visual Studio 12.0\Common7\IDE\</VisualStudioIDEPath>
+    <VisualStudioIDEPath>%ProgramFiles%\Microsoft Visual Studio 14.0\Common7\IDE\</VisualStudioIDEPath>
     <!-- full path to mstest.exe -->
     <MSTestExe>$(VisualStudioIDEPath)MSTest.exe</MSTestExe>
   </PropertyGroup>
@@ -135,7 +135,7 @@ Add-EFProvider $project 'VfpEntityFrameworkProvider2' 'VfpEntityFrameworkProvide
   </UsingTask>
 
   <Target Name="Build">
-    <CallTarget Targets="Test" />
+    <!-- <CallTarget Targets="Test" /> -->
 
     <ItemGroup>
       <SharedAssemblyInfoFiles Include="$(SourceCodePath)**\SharedAssemblyInfo.cs" />
