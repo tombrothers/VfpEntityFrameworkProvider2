@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.Common;
+using System.Data.Entity.Core.Common.CommandTrees;
 using System.Data.Entity.Core.Metadata.Edm;
 using System.Diagnostics;
 using System.Globalization;
@@ -2476,12 +2478,19 @@ namespace VfpEntityFrameworkProvider.SqlGeneration {
             return result;
         }
 
+        private ReadOnlyCollection<VfpPropertyExpression> _properties;
+
         protected T GetCommandTreeExpression<T>(VfpProviderManifest vfpManifest, System.Data.Entity.Core.Common.CommandTrees.DbCommandTree commandTree) where T : VfpCommandTree {
             var visitor = new ExpressionConverterVisitor();
             var queryCommandTree = visitor.Visit(commandTree);
+            var vfpCommandTree = (T)ExpressionRewritter.Rewrite(vfpManifest, queryCommandTree);
 
-            return (T)ExpressionRewritter.Rewrite(vfpManifest, queryCommandTree);
+            _properties = PropertyGatherer.Gather(vfpCommandTree);
+
+            return vfpCommandTree;
         }
+
+        
 
         protected List<DbParameter> GetParameters(VfpExpression expression) {
             var parameterExpressions = ParameterGatherer.Gather(expression);
@@ -2942,6 +2951,10 @@ namespace VfpEntityFrameworkProvider.SqlGeneration {
                 // not already exist.
 
                 foreach (EdmProperty property in symbol.Type.GetProperties()) {
+                    if(!_properties.Any(x => x.Property.Name == property.Name && x.Property.DeclaringType == property.DeclaringType)) {
+                        continue;
+                    }
+
                     string recordMemberName = property.Name;
                     // Since all renaming happens in the second phase
                     // we lose nothing by setting the next column name index to 0
