@@ -56,6 +56,8 @@ namespace VfpEntityFrameworkProvider.Visitors.Rewriters {
                 case VfpExpressionKind.LessThanOrEquals:
                     return expression.Right.GreaterThanOrEquals(expression.Left);
 
+                case VfpExpressionKind.Equals:
+                    return expression.Right.ExpressionEquals(expression.Left);
                 default:
                     return expression;
             }
