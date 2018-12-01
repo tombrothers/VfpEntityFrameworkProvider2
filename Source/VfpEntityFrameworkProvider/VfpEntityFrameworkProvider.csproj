@@ -199,6 +199,7 @@
     <Compile Include="TableIndexService.cs" />
     <Compile Include="TypeExtensions.cs" />
     <Compile Include="VfpConnectionFactory.cs" />
+    <Compile Include="VfpConsts.cs" />
     <Compile Include="VfpDbConfiguration.cs" />
     <Compile Include="VfpFunctions.cs" />
     <Compile Include="VfpMigrationSqlGenerator.cs" />

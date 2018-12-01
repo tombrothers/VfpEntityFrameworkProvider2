@@ -522,7 +522,16 @@ namespace VfpEntityFrameworkProvider.Visitors {
                             Write(str);
                             break;
                         case TypeCode.DateTime:
-                            Write(string.Format("CTOT('{0:yyyy-MM-dd}T{0:HH:mm:ss}')", value));
+                            if ((DateTime)value != VfpConsts.VfpBlankDate)
+                            {
+                                Write(string.Format("CTOT('{0:yyyy-MM-dd}T{0:HH:mm:ss}')", value));
+                            }
+                            else
+                            {
+                                // Blank date support
+                                Write("CTOT('')");
+                            }
+
                             break;
                         case TypeCode.Object:
                             throw new NotSupportedException(string.Format("The constant for '{0}' is not supported", value));
