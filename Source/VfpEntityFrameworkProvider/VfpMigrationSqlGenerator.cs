@@ -218,7 +218,7 @@ namespace VfpEntityFrameworkProvider {
             using (var writer = Writer()) {
                 var tableIndex = _tableIndexService.GetTableIndex(createIndexOperation.Table, createIndexOperation.Columns);
 
-                writer.Write(string.Format("EXECSCRIPT([USE {0} IN SELECT ('{0}') EXCLUSIVE] + CHR(13) + [INDEX ON {1} TAG {2}{3}])",
+                writer.Write(string.Format("EXECSCRIPT([USE {0} IN SELECT ('{0}') EXCLUSIVE] + CHR(13) + [INDEX ON {1} TAG {2}{3}] + CHR(13) + [USE IN {0}])",
                                            tableIndex.TableName,
                                            tableIndex.IndexExpression,
                                            tableIndex.IndexName,
