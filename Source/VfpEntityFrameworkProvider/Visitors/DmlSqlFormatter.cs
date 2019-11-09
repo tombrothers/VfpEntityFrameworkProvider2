@@ -94,11 +94,35 @@ namespace VfpEntityFrameworkProvider.Visitors {
             formatter.WriteLine(Indentation.Same);
 
             // generate returning sql
-            GenerateReturningSql(vfpManifest, commandTree, formatter, commandTree.Returning);
+            GenerateUpdateReturningSql(vfpManifest, commandTree, formatter, commandTree.Returning);
 
             parameters = GetParameters(commandTree);
 
             return formatter.ToString();
+        }
+
+        private static void GenerateUpdateReturningSql(VfpProviderManifest vfpManifest, VfpUpdateCommandTree commandTree, DmlSqlFormatter formatter, VfpExpression returning) {
+            if(returning == null) {
+                return;
+            }
+
+            formatter.WriteLine(Indentation.Same);
+            formatter.Write(VfpCommand.SplitCommandsToken);
+            formatter.WriteLine(Indentation.Same);
+
+            // select
+            formatter.Write("SELECT ");
+            returning.Accept(formatter);
+            formatter.WriteLine(Indentation.Same);
+
+            // from
+            formatter.Write("FROM ");
+            commandTree.Target.Expression.Accept(formatter);
+            formatter.WriteLine(Indentation.Same);
+
+            // where
+            formatter.Write("WHERE ");
+            commandTree.Predicate.Accept(formatter);
         }
 
         public static string GenerateInsertSql(VfpProviderManifest vfpManifest, System.Data.Entity.Core.Common.CommandTrees.DbInsertCommandTree insertCommandTree, out List<DbParameter> parameters) {
@@ -149,7 +173,7 @@ namespace VfpEntityFrameworkProvider.Visitors {
             formatter.WriteLine(Indentation.Same);
 
             // generate returning sql
-            GenerateReturningSql(vfpManifest, commandTree, formatter, commandTree.Returning);
+            GenerateInsertReturningSql(vfpManifest, commandTree, formatter, commandTree.Returning);
 
             parameters = GetParameters(commandTree);
 
@@ -184,7 +208,7 @@ namespace VfpEntityFrameworkProvider.Visitors {
             memberValues[property] = parameters[parameters.Count - 1];
         }
 
-        private static void GenerateReturningSql(VfpProviderManifest vfpManifest, VfpModificationCommandTree commandTree, DmlSqlFormatter formatter, VfpExpression returning) {
+        private static void GenerateInsertReturningSql(VfpProviderManifest vfpManifest, VfpModificationCommandTree commandTree, DmlSqlFormatter formatter, VfpExpression returning) {
             if (returning == null) {
                 return;
             }

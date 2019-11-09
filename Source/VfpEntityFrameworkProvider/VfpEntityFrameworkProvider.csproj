@@ -340,7 +340,7 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>"%ProgramFiles%\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.6.1 Tools\gacutil" -i "$(TargetDir)$(TargetFileName)"</PostBuildEvent>
+    <PostBuildEvent>"%25ProgramFiles%25\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\gacutil" -i "$(TargetDir)$(TargetFileName)"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>
