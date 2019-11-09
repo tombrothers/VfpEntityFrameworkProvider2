@@ -3123,12 +3123,12 @@ namespace VfpEntityFrameworkProvider.SqlGeneration {
                         typeName = "v(" + length + ")";
                     }
 
-                    // Using the Unicode Facet to determine if the field is binary...
-                    var binary = type.GetFacetValueOrDefault<bool>(FacetInfo.UnicodeFacetName, false);
+                    //// Using the Unicode Facet to determine if the field is binary...
+                    //var binary = type.GetFacetValueOrDefault<bool>(FacetInfo.UnicodeFacetName, false);
 
-                    if (binary) {
-                        typeName += " NOCPTRANS";
-                    }
+                    //if (binary) {
+                    //    typeName += " NOCPTRANS";
+                    //}
 
                     break;
 
