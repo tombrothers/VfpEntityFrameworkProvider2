@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VfpEntityFrameworkProvider", "VfpEntityFrameworkProvider\VfpEntityFrameworkProvider.csproj", "{0A084227-D4CE-4341-BF69-A51A082946A0}"
 EndProject
@@ -27,8 +27,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VfpExpressionVisualizer", "Visualizer\VfpExpressionVisualizer\VfpExpressionVisualizer.csproj", "{9CAC94D0-F9ED-434A-B956-0A699043E84E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VfpExpressionVisualizerTest", "Visualizer\VfpExpressionVisualizerTest\VfpExpressionVisualizerTest.csproj", "{9DA2243C-A93E-4DAF-917F-CBC1A37FA2A5}"
-EndProject
-Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "VfpEntityFrameworkProvider.Setup", "VfpEntityFrameworkProvider.Setup\VfpEntityFrameworkProvider.Setup.wixproj", "{BF533515-19F2-46FC-895D-3E3EAB968F6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -177,26 +175,6 @@ Global
 		{9DA2243C-A93E-4DAF-917F-CBC1A37FA2A5}.Release|Mixed Platforms.Build.0 = Release|x86
 		{9DA2243C-A93E-4DAF-917F-CBC1A37FA2A5}.Release|x86.ActiveCfg = Release|x86
 		{9DA2243C-A93E-4DAF-917F-CBC1A37FA2A5}.Release|x86.Build.0 = Release|x86
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Debug|x86.ActiveCfg = Debug|x86
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Debug|x86.Build.0 = Debug|x86
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release_40|Any CPU.ActiveCfg = Release_40|x86
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release_40|Mixed Platforms.ActiveCfg = Release_40|x86
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release_40|Mixed Platforms.Build.0 = Release_40|x86
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release_40|x86.ActiveCfg = Release_40|x86
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release_40|x86.Build.0 = Release_40|x86
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release_45|Any CPU.ActiveCfg = Release_45|x86
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release_45|Mixed Platforms.ActiveCfg = Release_45|x86
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release_45|Mixed Platforms.Build.0 = Release_45|x86
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release_45|x86.ActiveCfg = Release_45|x86
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release_45|x86.Build.0 = Release_45|x86
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release|Any CPU.ActiveCfg = Release|x86
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release|Mixed Platforms.Build.0 = Release|x86
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release|x86.ActiveCfg = Release|x86
-		{BF533515-19F2-46FC-895D-3E3EAB968F6E}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -206,6 +184,9 @@ Global
 		{E39ED181-F331-485D-8921-2A594393F706} = {8F6EE313-0AE4-424B-AA36-BD33BD16E84E}
 		{9CAC94D0-F9ED-434A-B956-0A699043E84E} = {16240E21-2F48-4E28-92C7-F7AAAC68BD1A}
 		{9DA2243C-A93E-4DAF-917F-CBC1A37FA2A5} = {16240E21-2F48-4E28-92C7-F7AAAC68BD1A}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B7CCF2C8-21B9-4C8F-A09C-812EEE4EF090}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = VfpEntityFrameworkProvider.vsmdi
