@@ -45,7 +45,7 @@ namespace VfpEntityFrameworkProvider.Tests {
         }
 
         private DecimalContext CreateDecimalContext() {
-            var connectionString = Path.Combine(TestContext.TestDeploymentDir, "Decimal");
+            var connectionString = Path.Combine(GetTestDeploymentDir(TestContext), "Decimal");
             var connection = new VfpConnection(connectionString);
 
             EnableTracing(connection);

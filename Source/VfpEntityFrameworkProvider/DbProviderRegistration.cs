@@ -1,7 +1,8 @@
 using System;
-using System.Configuration;
 using System.Data;
+using System.Data.Common;
 using System.Linq;
+using System.Reflection;
 
 namespace VfpEntityFrameworkProvider {
     internal class DbProviderRegistration {
@@ -9,15 +10,18 @@ namespace VfpEntityFrameworkProvider {
             ArgumentUtility.CheckNotNullOrEmpty("name", name);
             ArgumentUtility.CheckNotNullOrEmpty("invariantName", invariantName);
             ArgumentUtility.CheckNotNullOrEmpty("description", description);
-
+#if NETSTANDARD2_1
+            DbProviderFactories.RegisterFactory(invariantName, factoryType.AssemblyQualifiedName);
+#else
             var providers = GetProviders();
 
-            if (providers == null) {
+            if(providers == null) {
                 return false;
             }
 
             AddProvider(providers, name, invariantName, description, factoryType);
 
+#endif
             return true;
         }
 
@@ -35,7 +39,7 @@ namespace VfpEntityFrameworkProvider {
         }
 
         private static void RemoveExistingProvider(DataTable providers, string invariantName) {
-            if (providers.Rows.Count == 0) {
+            if(providers.Rows.Count == 0) {
                 return;
             }
 
@@ -43,7 +47,7 @@ namespace VfpEntityFrameworkProvider {
                                     .Cast<DataRow>()
                                     .FirstOrDefault(x => Convert.ToString(x["InvariantName"]) == invariantName);
 
-            if (provider == null) {
+            if(provider == null) {
                 return;
             }
 
@@ -51,17 +55,13 @@ namespace VfpEntityFrameworkProvider {
         }
 
         private static DataTable GetProviders() {
-            var systemData = ConfigurationManager.GetSection("system.data") as DataSet;
+            // Calling GetFactoryClasses creates the _providerTable DataTable but returns a copy of the DataTable.
+            DbProviderFactories.GetFactoryClasses();
 
-            if (systemData == null) {
-                return null;
-            }
-
-            if (!systemData.Tables.Contains("DbProviderFactories")) {
-                return null;
-            }
-
-            return systemData.Tables["DbProviderFactories"];
+            // Reflection is used to get a reference to the _providerTable DataTable.
+            var fieldInfos = typeof(DbProviderFactories).GetFields(BindingFlags.Static | BindingFlags.NonPublic);
+            var fieldInfo = typeof(DbProviderFactories).GetField("_providerTable", BindingFlags.Static | BindingFlags.NonPublic);
+            return (DataTable)fieldInfo.GetValue(null);
         }
     }
 }

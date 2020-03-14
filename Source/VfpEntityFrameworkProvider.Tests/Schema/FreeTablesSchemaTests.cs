@@ -1,7 +1,7 @@
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Data;
 using System.IO;
-using ICSharpCode.SharpZipLib.Zip;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.IO.Compression;
 using VfpEntityFrameworkProvider.Schema;
 
 namespace VfpEntityFrameworkProvider.Tests.Schema {
@@ -98,12 +98,11 @@ namespace VfpEntityFrameworkProvider.Tests.Schema {
         public static void ClassInitialize(TestContext context) {
             File.WriteAllBytes("FreeTables.zip", Properties.Resources.FreeTables);
 
-            var zip = new FastZip();
-            zip.ExtractZip("FreeTables.zip", Path.Combine(context.TestDeploymentDir, "FreeTables"), string.Empty);
+            ZipFile.ExtractToDirectory("FreeTables.zip", Path.Combine(GetTestDeploymentDir(context), "FreeTables"));
         }
 
         protected override VfpConnection GetConnection() {
-            var connectionString = Path.Combine(TestContext.TestDeploymentDir, "FreeTables");
+            var connectionString = Path.Combine(GetTestDeploymentDir(TestContext), "FreeTables");
             var connection = new VfpConnection(connectionString);
             connection.Open();
 

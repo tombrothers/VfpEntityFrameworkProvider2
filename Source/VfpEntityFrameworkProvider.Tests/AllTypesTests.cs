@@ -187,7 +187,7 @@ namespace VfpEntityFrameworkProvider.Tests {
         }
 
         private new VfpConnection GetConnection() {
-            var connection = new VfpConnection(Path.Combine(TestContext.TestDeploymentDir, @"AllTypes\AllTypes.dbc"));
+            var connection = new VfpConnection(Path.Combine(GetTestDeploymentDir(TestContext), @"AllTypes\AllTypes.dbc"));
 
             EnableTracing(connection);
 

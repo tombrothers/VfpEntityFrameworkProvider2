@@ -2,7 +2,6 @@ using System;
 using System.Data;
 using System.Diagnostics;
 using System.Text;
-using System.Windows.Forms;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace VfpEntityFrameworkProvider.Tests {
@@ -177,7 +176,7 @@ namespace VfpEntityFrameworkProvider.Tests {
             sb.Append(Environment.NewLine);
             sb.Append("}");
 
-            Clipboard.SetText(sb.ToString());
+            //Clipboard.SetText(sb.ToString());
         }
     }
 }

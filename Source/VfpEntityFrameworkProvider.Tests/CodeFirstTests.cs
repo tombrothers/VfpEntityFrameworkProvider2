@@ -52,7 +52,7 @@ namespace VfpEntityFrameworkProvider.Tests {
 
         [ClassInitialize]
         public static void ClassInitialize(TestContext testContext) {
-            var connectionString = Path.Combine(testContext.TestDeploymentDir, @"CodeFirstData\CodeFirst.dbc");
+            var connectionString = Path.Combine(GetTestDeploymentDir(testContext), @"CodeFirstData\CodeFirst.dbc");
             var connection = new VfpConnection(connectionString);
             var context = new CodeFirstContext(connection);
 

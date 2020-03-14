@@ -1,8 +1,8 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
-using ICSharpCode.SharpZipLib.Zip;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using VfpClient;
 using VfpEntityFrameworkProvider.Tests.Dal.CodeFirst;
@@ -13,29 +13,46 @@ namespace VfpEntityFrameworkProvider.Tests {
     [TestClass]
     public abstract class TestBase {
         public TestContext TestContext { get; set; }
+        private static Guid testRun;
 
         [AssemblyInitialize]
         public static void AssemblyInit(TestContext context) {
+            testRun = Guid.NewGuid();
             VfpProviderFactory.Register();
-            File.WriteAllBytes("NorthwindVfp.zip", Properties.Resources.NorthwindVfp);
-            File.WriteAllBytes("DecimalTable.zip", Properties.Resources.DecimalTable);
-            File.WriteAllBytes("AutoGenId.zip", Properties.Resources.AutoGenId);
-            File.WriteAllBytes("AllTypes.zip", Properties.Resources.AllTypes);
+            CreateZip("NorthwindVfp.zip", Properties.Resources.NorthwindVfp);
+            CreateZip("DecimalTable.zip", Properties.Resources.DecimalTable);
+            CreateZip("AutoGenId.zip", Properties.Resources.AutoGenId);
+            CreateZip("AllTypes.zip", Properties.Resources.AllTypes);
 
-
-            var zip = new FastZip();
-            zip.ExtractZip("NorthwindVfp.zip", context.TestDeploymentDir, String.Empty);
-            zip.ExtractZip("DecimalTable.zip", Path.Combine(context.TestDeploymentDir, "Decimal"), String.Empty);
-            zip.ExtractZip("AutoGenId.zip", Path.Combine(context.TestDeploymentDir, @"AutoGenId\Data"), String.Empty);
-            Directory.CreateDirectory(Path.Combine(context.TestDeploymentDir, "AllTypes"));
-            zip.ExtractZip("AllTypes.zip", Path.Combine(context.TestDeploymentDir, @"AllTypes"), String.Empty);
+            UnZip("NorthwindVfp.zip", GetTestDeploymentDir(context));
+            UnZip("DecimalTable.zip", Path.Combine(GetTestDeploymentDir(context), "Decimal"));
+            UnZip("AutoGenId.zip", Path.Combine(GetTestDeploymentDir(context), @"AutoGenId\Data"));
+            UnZip("AllTypes.zip", Path.Combine(GetTestDeploymentDir(context), @"AllTypes"));
 
             VfpClientTracing.Tracer = new TraceSource("VfpClient", SourceLevels.Information);
             VfpClientTracing.Tracer.Listeners.Add(new TestContextTraceListener(context));
         }
 
+        private static void UnZip(string zipFile, string directory) {
+            if(Directory.Exists(directory)) {
+                Directory.Delete(directory);
+            }
+
+            Directory.CreateDirectory(directory);
+
+            ZipFile.ExtractToDirectory(zipFile, directory);
+        }
+
+        private static void CreateZip(string file, byte[] content) {
+            if(File.Exists(file)) {
+                File.Delete(file);
+            }
+
+            File.WriteAllBytes(file, content);
+        }
+
         protected CodeFirstContext GetCodeFirstContext() {
-            var connectionString = Path.Combine(TestContext.TestDeploymentDir, @"CodeFirstData\CodeFirst.dbc");
+            var connectionString = Path.Combine(GetTestDeploymentDir(TestContext), @"CodeFirstData\CodeFirst.dbc");
             var connection = new VfpConnection(connectionString);
 
             EnableTracing(connection);
@@ -54,13 +71,16 @@ namespace VfpEntityFrameworkProvider.Tests {
         }
 
         protected virtual VfpConnection GetConnection() {
-            var connectionString = Path.Combine(TestContext.TestDeploymentDir, "northwind.dbc");
+            var connectionString = Path.Combine(GetTestDeploymentDir(TestContext), "northwind.dbc");
             var connection = new VfpConnection(connectionString);
 
             EnableTracing(connection);
 
             return connection;
         }
+
+        protected static string GetTestDeploymentDir(TestContext context) =>
+            Path.Combine(context.TestDeploymentDir, testRun.ToString());
 
         protected void EnableTracing(VfpConnection connection) {
             if (Debugger.IsAttached) {

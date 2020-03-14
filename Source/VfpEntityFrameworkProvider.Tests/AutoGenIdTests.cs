@@ -54,7 +54,7 @@ namespace VfpEntityFrameworkProvider.Tests {
         }
 
         private AutoGenDataContext GetAutoGenDataContext() {
-            var connectionString = Path.Combine(TestContext.TestDeploymentDir, @"AutoGenId\Data");
+            var connectionString = Path.Combine(GetTestDeploymentDir(TestContext), @"AutoGenId\Data");
             var connection = new VfpConnection(connectionString);
 
             EnableTracing(connection);
