@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using VfpClient;
 using VfpEntityFrameworkProvider.Tests.Dal.AllTypes;
@@ -98,8 +99,6 @@ namespace VfpEntityFrameworkProvider.Tests {
 
                 Assert.AreEqual(string.Empty, item.Char);
                 Assert.AreEqual(0, item.Currency);
-                Assert.AreEqual("12/30/1899 12:00:00 AM", item.Date.ToString());
-                Assert.AreEqual("12/30/1899 12:00:00 AM", item.DateTime.ToString());
                 Assert.AreEqual(0, item.Decimal);
                 Assert.AreEqual(0, item.Double);
                 Assert.AreEqual(0, item.Float);
@@ -108,6 +107,16 @@ namespace VfpEntityFrameworkProvider.Tests {
                 Assert.AreEqual(0, item.Long);
                 Assert.AreEqual(string.Empty, item.Memo);
                 Assert.AreEqual(string.Empty, item.VarChar);
+
+                var currentCulture = Thread.CurrentThread.CurrentCulture;
+
+                try {
+                    Assert.AreEqual("12/30/1899 12:00:00 AM", item.Date.ToString());
+                    Assert.AreEqual("12/30/1899 12:00:00 AM", item.DateTime.ToString());
+                }
+                finally {
+                    Thread.CurrentThread.CurrentCulture = currentCulture;
+                }
             }
         }
 
