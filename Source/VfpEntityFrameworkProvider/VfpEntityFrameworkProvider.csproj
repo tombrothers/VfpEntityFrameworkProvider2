@@ -14,7 +14,6 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.1'">
-    <PackageReference Include="System.Data.OleDb" Version="5.0.0-preview.3.20164.2" />
     <PackageReference Include="System.Resources.ResourceManager" Version="4.3.0" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
   </ItemGroup>
@@ -28,8 +27,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="EntityFramework" Version="6.4.0" />
-    <PackageReference Include="VfpClient" Version="1.0.1-beta" />
+    <PackageReference Include="EntityFramework" Version="6.4.4" />    
+    <PackageReference Include="VfpClient" Version="1.0.5-beta" />
   </ItemGroup>
 
   <ItemGroup>
