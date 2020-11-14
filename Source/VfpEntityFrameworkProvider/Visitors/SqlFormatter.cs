@@ -234,7 +234,8 @@ namespace VfpEntityFrameworkProvider.Visitors {
         }
 
         public override VfpExpression Visit(VfpNullExpression expression) {
-            Write("CAST(NULL AS ");
+            Write("CAST(\"\" AS ");
+//            Write("CAST(NULL AS "); MPP HACK Fix Date Cast
             Write(GetSqlPrimitiveType(expression.ResultType));
             Write(")");
 
