@@ -10,9 +10,7 @@ namespace VfpEntityFrameworkProvider {
             ArgumentUtility.CheckNotNullOrEmpty("name", name);
             ArgumentUtility.CheckNotNullOrEmpty("invariantName", invariantName);
             ArgumentUtility.CheckNotNullOrEmpty("description", description);
-#if NETSTANDARD2_1
-            DbProviderFactories.RegisterFactory(invariantName, factoryType.AssemblyQualifiedName);
-#else
+#if NET461
             var providers = GetProviders();
 
             if(providers == null) {
@@ -20,7 +18,8 @@ namespace VfpEntityFrameworkProvider {
             }
 
             AddProvider(providers, name, invariantName, description, factoryType);
-
+#else
+            DbProviderFactories.RegisterFactory(invariantName, factoryType.AssemblyQualifiedName);
 #endif
             return true;
         }

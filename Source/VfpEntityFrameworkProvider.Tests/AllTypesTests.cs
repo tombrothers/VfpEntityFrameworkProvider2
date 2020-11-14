@@ -1,8 +1,7 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.IO;
 using System.Linq;
-using System.Threading;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using VfpClient;
 using VfpEntityFrameworkProvider.Tests.Dal.AllTypes;
 
@@ -57,7 +56,7 @@ namespace VfpEntityFrameworkProvider.Tests {
                 Assert.AreEqual(0, context.AllTypes.Count(x => VfpFunctions.Empty(x.Memo) == false));
 
                 Assert.AreEqual(1, context.AllTypes.Count(x => VfpFunctions.Empty(x.VarChar) == true));
-                Assert.AreEqual(0, context.AllTypes.Count(x => VfpFunctions.Empty(x.VarChar) == false));  
+                Assert.AreEqual(0, context.AllTypes.Count(x => VfpFunctions.Empty(x.VarChar) == false));
             }
         }
 
@@ -108,15 +107,8 @@ namespace VfpEntityFrameworkProvider.Tests {
                 Assert.AreEqual(string.Empty, item.Memo);
                 Assert.AreEqual(string.Empty, item.VarChar);
 
-                var currentCulture = Thread.CurrentThread.CurrentCulture;
-
-                try {
-                    Assert.AreEqual("12/30/1899 12:00:00 AM", item.Date.ToString());
-                    Assert.AreEqual("12/30/1899 12:00:00 AM", item.DateTime.ToString());
-                }
-                finally {
-                    Thread.CurrentThread.CurrentCulture = currentCulture;
-                }
+                Assert.IsNull(item.Date);
+                Assert.IsNull(item.DateTime);
             }
         }
 
